@@ -1,13 +1,11 @@
-# Generated from Gramatica.g4 by ANTLR 4.7.1
+# Generated from Gramatica.g4 by ANTLR 4.5.1
 # encoding: utf-8
 from antlr4 import *
 from io import StringIO
-from typing.io import TextIO
-import sys
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\16")
+        buf.write("\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\16")
         buf.write("]\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b")
         buf.write("\t\b\4\t\t\t\4\n\t\n\3\2\6\2\26\n\2\r\2\16\2\27\3\2\3")
         buf.write("\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3")
@@ -15,26 +13,26 @@ def serializedATN():
         buf.write("\3\3\3\3\3\3\5\39\n\3\3\3\5\3<\n\3\3\3\5\3?\n\3\3\4\3")
         buf.write("\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b")
         buf.write("\3\t\3\t\3\n\5\nS\n\n\3\n\6\nV\n\n\r\n\16\nW\3\n\5\n[")
-        buf.write("\n\n\3\n\2\2\13\2\4\6\b\n\f\16\20\22\2\2\2_\2\25\3\2\2")
-        buf.write("\2\4;\3\2\2\2\6@\3\2\2\2\bC\3\2\2\2\nF\3\2\2\2\fI\3\2")
-        buf.write("\2\2\16M\3\2\2\2\20O\3\2\2\2\22R\3\2\2\2\24\26\5\4\3\2")
-        buf.write("\25\24\3\2\2\2\26\27\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2")
-        buf.write("\2\30\31\3\2\2\2\31\32\7\2\2\3\32\3\3\2\2\2\33\34\5\6")
-        buf.write("\4\2\34\35\5\f\7\2\35\36\5\16\b\2\36\37\7\n\2\2\37 \7")
-        buf.write("\13\2\2 !\5\20\t\2!<\3\2\2\2\"#\5\6\4\2#$\5\f\7\2$%\5")
-        buf.write("\16\b\2%<\3\2\2\2&\'\5\b\5\2\'(\5\f\7\2()\5\16\b\2)*\7")
-        buf.write("\n\2\2*-\7\13\2\2+.\5\22\n\2,.\7\7\2\2-+\3\2\2\2-,\3\2")
-        buf.write("\2\2.<\3\2\2\2/\60\5\b\5\2\60\61\5\f\7\2\61\62\5\22\n")
-        buf.write("\2\62<\3\2\2\2\63\64\5\n\6\2\64\65\7\7\2\2\65<\3\2\2\2")
-        buf.write("\668\7\7\2\2\679\7\b\2\28\67\3\2\2\289\3\2\2\29:\3\2\2")
-        buf.write("\2:<\7\t\2\2;\33\3\2\2\2;\"\3\2\2\2;&\3\2\2\2;/\3\2\2")
-        buf.write("\2;\63\3\2\2\2;\66\3\2\2\2<>\3\2\2\2=?\7\16\2\2>=\3\2")
-        buf.write("\2\2>?\3\2\2\2?\5\3\2\2\2@A\7\4\2\2AB\7\13\2\2B\7\3\2")
-        buf.write("\2\2CD\7\5\2\2DE\7\13\2\2E\t\3\2\2\2FG\7\6\2\2GH\7\13")
-        buf.write("\2\2H\13\3\2\2\2IJ\7\3\2\2JK\7\n\2\2KL\7\13\2\2L\r\3\2")
-        buf.write("\2\2MN\7\3\2\2N\17\3\2\2\2OP\7\3\2\2P\21\3\2\2\2QS\7\f")
-        buf.write("\2\2RQ\3\2\2\2RS\3\2\2\2SU\3\2\2\2TV\7\b\2\2UT\3\2\2\2")
-        buf.write("VW\3\2\2\2WU\3\2\2\2WX\3\2\2\2XZ\3\2\2\2Y[\7\r\2\2ZY\3")
+        buf.write("\n\n\3\n\2\2\13\2\4\6\b\n\f\16\20\22\2\2_\2\25\3\2\2\2")
+        buf.write("\4;\3\2\2\2\6@\3\2\2\2\bC\3\2\2\2\nF\3\2\2\2\fI\3\2\2")
+        buf.write("\2\16M\3\2\2\2\20O\3\2\2\2\22R\3\2\2\2\24\26\5\4\3\2\25")
+        buf.write("\24\3\2\2\2\26\27\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2")
+        buf.write("\30\31\3\2\2\2\31\32\7\2\2\3\32\3\3\2\2\2\33\34\5\6\4")
+        buf.write("\2\34\35\5\f\7\2\35\36\5\16\b\2\36\37\7\n\2\2\37 \7\13")
+        buf.write("\2\2 !\5\20\t\2!<\3\2\2\2\"#\5\6\4\2#$\5\f\7\2$%\5\16")
+        buf.write("\b\2%<\3\2\2\2&\'\5\b\5\2\'(\5\f\7\2()\5\16\b\2)*\7\n")
+        buf.write("\2\2*-\7\13\2\2+.\5\22\n\2,.\7\7\2\2-+\3\2\2\2-,\3\2\2")
+        buf.write("\2.<\3\2\2\2/\60\5\b\5\2\60\61\5\f\7\2\61\62\5\22\n\2")
+        buf.write("\62<\3\2\2\2\63\64\5\n\6\2\64\65\7\7\2\2\65<\3\2\2\2\66")
+        buf.write("8\7\7\2\2\679\7\b\2\28\67\3\2\2\289\3\2\2\29:\3\2\2\2")
+        buf.write(":<\7\t\2\2;\33\3\2\2\2;\"\3\2\2\2;&\3\2\2\2;/\3\2\2\2")
+        buf.write(";\63\3\2\2\2;\66\3\2\2\2<>\3\2\2\2=?\7\16\2\2>=\3\2\2")
+        buf.write("\2>?\3\2\2\2?\5\3\2\2\2@A\7\4\2\2AB\7\13\2\2B\7\3\2\2")
+        buf.write("\2CD\7\5\2\2DE\7\13\2\2E\t\3\2\2\2FG\7\6\2\2GH\7\13\2")
+        buf.write("\2H\13\3\2\2\2IJ\7\3\2\2JK\7\n\2\2KL\7\13\2\2L\r\3\2\2")
+        buf.write("\2MN\7\3\2\2N\17\3\2\2\2OP\7\3\2\2P\21\3\2\2\2QS\7\f\2")
+        buf.write("\2RQ\3\2\2\2RS\3\2\2\2SU\3\2\2\2TV\7\b\2\2UT\3\2\2\2V")
+        buf.write("W\3\2\2\2WU\3\2\2\2WX\3\2\2\2XZ\3\2\2\2Y[\7\r\2\2ZY\3")
         buf.write("\2\2\2Z[\3\2\2\2[\23\3\2\2\2\n\27-8;>RWZ")
         return buf.getvalue()
 
@@ -82,9 +80,9 @@ class GramaticaParser ( Parser ):
     PAREN_CLOSE=11
     NEWLINE=12
 
-    def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
-        super().__init__(input, output)
-        self.checkVersion("4.7.1")
+    def __init__(self, input:TokenStream):
+        super().__init__(input)
+        self.checkVersion("4.5.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -223,7 +221,6 @@ class GramaticaParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 57
-            self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,3,self._ctx)
             if la_ == 1:
                 self.state = 25
@@ -261,16 +258,15 @@ class GramaticaParser ( Parser ):
                 self.state = 40
                 self.match(GramaticaParser.WHITESPACE)
                 self.state = 43
-                self._errHandler.sync(self)
                 token = self._input.LA(1)
                 if token in [GramaticaParser.DIGIT, GramaticaParser.PAREN_OPEN]:
                     self.state = 41
                     self.inm()
-                    pass
+
                 elif token in [GramaticaParser.LABEL]:
                     self.state = 42
                     self.match(GramaticaParser.LABEL)
-                    pass
+
                 else:
                     raise NoViableAltException(self)
 
@@ -296,7 +292,6 @@ class GramaticaParser ( Parser ):
                 self.state = 52
                 self.match(GramaticaParser.LABEL)
                 self.state = 54
-                self._errHandler.sync(self)
                 _la = self._input.LA(1)
                 if _la==GramaticaParser.DIGIT:
                     self.state = 53
@@ -309,7 +304,6 @@ class GramaticaParser ( Parser ):
 
 
             self.state = 60
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==GramaticaParser.NEWLINE:
                 self.state = 59
@@ -623,7 +617,6 @@ class GramaticaParser ( Parser ):
         try:
             self.enterOuterAlt(localctx, 1)
             self.state = 80
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==GramaticaParser.PAREN_OPEN:
                 self.state = 79
@@ -643,7 +636,6 @@ class GramaticaParser ( Parser ):
                     break
 
             self.state = 88
-            self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==GramaticaParser.PAREN_CLOSE:
                 self.state = 87

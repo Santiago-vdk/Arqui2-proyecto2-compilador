@@ -29,17 +29,22 @@ with open(programa) as file:
         instrucciones_indexadas.append(extraerOperandos(l, contador))
         contador += 1
 
+
+
+# Sustituir etiquetas
 posicion = 0
 for instruccion in instrucciones_indexadas:
     if(instruccion[1] in instrucciones_branching):
         etiqueta = instruccion[-1]
         indice = encontrarEtiqueta(instrucciones_indexadas, etiqueta)
-        instrucciones_indexadas[posicion][-1] = instrucciones_indexadas[indice]
+
+        instrucciones_indexadas[posicion][-1] = indice
+       
     posicion += 1
 
 removerEtiquetas(instrucciones_indexadas)
 
-# instrucciones_indexadas = indexarInstrucciones(instrucciones_indexadas)
+#instrucciones_indexadas = indexarInstrucciones(instrucciones_indexadas)
 
 for instruccion in instrucciones_indexadas:
     print(instruccion)
