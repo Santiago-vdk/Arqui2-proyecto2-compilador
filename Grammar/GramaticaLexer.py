@@ -1,13 +1,11 @@
-# Generated from Gramatica.g4 by ANTLR 4.7.1
+# Generated from Gramatica.g4 by ANTLR 4.5.1
 from antlr4 import *
 from io import StringIO
-from typing.io import TextIO
-import sys
 
 
 def serializedATN():
     with StringIO() as buf:
-        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\2\16")
+        buf.write("\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\2\16")
         buf.write("\u00ac\b\1\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7")
         buf.write("\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r")
         buf.write("\4\16\t\16\4\17\t\17\3\2\3\2\3\3\3\3\3\4\3\4\3\4\3\4\3")
@@ -24,10 +22,10 @@ def serializedATN():
         buf.write("\3\r\3\r\3\16\3\16\3\17\6\17\u00a9\n\17\r\17\16\17\u00aa")
         buf.write("\2\2\20\3\2\5\2\7\3\t\4\13\5\r\6\17\7\21\b\23\t\25\n\27")
         buf.write("\13\31\f\33\r\35\16\3\2\6\3\2c|\3\2C\\\3\2\62;\4\2\f\f")
-        buf.write("\17\17\2\u00cf\2\7\3\2\2\2\2\t\3\2\2\2\2\13\3\2\2\2\2")
-        buf.write("\r\3\2\2\2\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25")
-        buf.write("\3\2\2\2\2\27\3\2\2\2\2\31\3\2\2\2\2\33\3\2\2\2\2\35\3")
-        buf.write("\2\2\2\3\37\3\2\2\2\5!\3\2\2\2\7g\3\2\2\2\tz\3\2\2\2\13")
+        buf.write("\17\17\u00cf\2\7\3\2\2\2\2\t\3\2\2\2\2\13\3\2\2\2\2\r")
+        buf.write("\3\2\2\2\2\17\3\2\2\2\2\21\3\2\2\2\2\23\3\2\2\2\2\25\3")
+        buf.write("\2\2\2\2\27\3\2\2\2\2\31\3\2\2\2\2\33\3\2\2\2\2\35\3\2")
+        buf.write("\2\2\3\37\3\2\2\2\5!\3\2\2\2\7g\3\2\2\2\tz\3\2\2\2\13")
         buf.write("\u008b\3\2\2\2\r\u008d\3\2\2\2\17\u0091\3\2\2\2\21\u0099")
         buf.write("\3\2\2\2\23\u009d\3\2\2\2\25\u009f\3\2\2\2\27\u00a1\3")
         buf.write("\2\2\2\31\u00a3\3\2\2\2\33\u00a5\3\2\2\2\35\u00a8\3\2")
@@ -84,6 +82,7 @@ class GramaticaLexer(Lexer):
 
     decisionsToDFA = [ DFA(ds, i) for i, ds in enumerate(atn.decisionToState) ]
 
+
     REG = 1
     INSTR_R = 2
     INSTR_I = 3
@@ -96,8 +95,6 @@ class GramaticaLexer(Lexer):
     PAREN_OPEN = 10
     PAREN_CLOSE = 11
     NEWLINE = 12
-
-    channelNames = [ u"DEFAULT_TOKEN_CHANNEL", u"HIDDEN" ]
 
     modeNames = [ "DEFAULT_MODE" ]
 
@@ -114,9 +111,9 @@ class GramaticaLexer(Lexer):
 
     grammarFileName = "Gramatica.g4"
 
-    def __init__(self, input=None, output:TextIO = sys.stdout):
-        super().__init__(input, output)
-        self.checkVersion("4.7.1")
+    def __init__(self, input=None):
+        super().__init__(input)
+        self.checkVersion("4.5.1")
         self._interp = LexerATNSimulator(self, self.atn, self.decisionsToDFA, PredictionContextCache())
         self._actions = None
         self._predicates = None
