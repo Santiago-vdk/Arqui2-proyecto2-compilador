@@ -1,3 +1,4 @@
+import sys
 from Instrucciones import *
 
 
@@ -59,8 +60,17 @@ def encontrarEtiqueta(instrucciones, etiqueta):
         if(instruccion[1] == etiqueta):
             return int(instruccion[0]) + 1
 
-    print("Etiqueta no encontrada")
-    return -1
+    print("Encontrar Etiqueta: no encontrada " + etiqueta)
+    sys.exit()
+
+
+def encontrarEtiquetaReIndexada(instrucciones, etiqueta):
+    for instruccion in instrucciones:
+        if(instruccion[1] == int(etiqueta)):
+            return instruccion[0] - 1
+
+    print("Etiqueta Reindexada no encontrada " + etiqueta)
+    sys.exit()
 
 
 def removerEtiquetas(instrucciones):
@@ -74,6 +84,14 @@ def removerEtiquetas(instrucciones):
 def indexarInstrucciones(instrucciones):
     contador = 0
     while contador < len(instrucciones):
-        instrucciones[contador][0] = contador
+        instrucciones[contador].insert(0, contador)
+        contador += 1
+    return instrucciones
+
+
+def removerIndicePreTags(instrucciones):
+    contador = 0
+    while contador < len(instrucciones):
+        instrucciones[contador].pop(1)
         contador += 1
     return instrucciones

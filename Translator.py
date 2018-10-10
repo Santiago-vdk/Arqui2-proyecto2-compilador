@@ -1,3 +1,5 @@
+import sys
+
 
 def traducirOperando(registro):
 
@@ -99,12 +101,10 @@ def traducirOperando(registro):
         return "11111"
     else:
         print("Registro no encontrado")
-        return -1
-
-# Traductor la instruccion a bits
+        sys.exit()
 
 
-def traducirOperacio(operacion):
+def traducirOperacion(operacion):
     if(operacion == "add"):
 
         return "00000"
@@ -143,4 +143,4 @@ def traducirOperacio(operacion):
         return "01111"
     else:
         print("Operacion no encontrada")
-        return -1
+        sys.exit()
