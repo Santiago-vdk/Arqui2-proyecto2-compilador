@@ -42,11 +42,13 @@ inm							: PAREN_OPEN? DIGIT+ PAREN_CLOSE?;
 
 INSTR_R				:	('add' | 'addu' |  'and' | 'jr' | 'nor' 
 						| 'or'   | 'slt' | 'sltu' | 'sll' | 'srl' 
-						| 'sub' | 'subu') ;
+						| 'sub' | 'subu' | 'vadd' | 'vsub' | 'vxor' | 'vand') ;
 
 INSTR_I				:	('addi' | 'addiu' | 'andi' | 'beq' | 'bne'
 						| 'lbu' | 'lhu' | 'll' | 'lui' | 'lw' | 'ori'
-						| 'slti' | 'sltiu' | 'sb' | 'sc' | 'sh' | 'sw') ;
+						| 'slti' | 'sltiu' | 'sb' | 'sc' | 'sh' | 'sw'
+						| 'vaddi' | 'vsll' | 'vsrl' | 'vrotl' | 'vrotr'
+						| 'vsb' | 'vlbu' | 'vmov' | 'show') ;
 
 INSTR_J				:	('j' | 'jal') ;
 
