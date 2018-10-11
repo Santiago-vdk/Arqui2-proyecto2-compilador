@@ -50,14 +50,16 @@ for instruccion in instrucciones_indexadas:
     if(instruccion[2] in instrucciones_branching):
         direccion = instruccion[-1]
         indice = encontrarEtiqueta(instrucciones_indexadas, direccion)
-        instrucciones_indexadas[posicion][-1] = "{" + str(indice - 1) + "}"
+        instrucciones_indexadas[posicion][-1] = indice - 1)
     posicion += 1
 
 # Se remueven los indices temporales
-instrucciones_indexadas = removerIndicePreTags(instrucciones_indexadas)
+instrucciones_indexadas=removerIndicePreTags(instrucciones_indexadas)
 
-instrucciones_compiladas = []
+instrucciones_compiladas=[]
 
+for instruccion in instrucciones_indexadas:
+    if(instruccion[1] in)
 
 for instruccion in instrucciones_indexadas:
     print(instruccion)

@@ -38,26 +38,30 @@ inm							: PAREN_OPEN? DIGIT+ PAREN_CLOSE?;
 
  REG : ('$0' | '$1' | '$2' | '$3' | '$4' | '$5' | '$6' | '$7' | '$8' | '$9' | '$10' | 
 	    '$11' | '$12' | '$13' | '$14' | '$15' | '$16' | '$17' | '$18' | '$19' | '$20' | 
-		'$21' | '$22' | '$23' | '$24' | '$25');
+		'$21' | '$22' | '$23' | '$24' | '$25' | '$26' | '$27' | '$28' | '$29' | '$30' | '$31') ;
 
-INSTR_R				:	('add' | 'sub' | 'mult' | 'sb' | 'lb' | 'mov') ;
+INSTR_R				:	('add' | 'addu' |  'and' | 'jr' | 'nor' 
+						| 'or'   | 'slt' | 'sltu' | 'sll' | 'srl' 
+						| 'sub' | 'subu') ;
 
-INSTR_I				:	('addi' | 'subi' | 'beq' | 'movi') ;
+INSTR_I				:	('addi' | 'addiu' | 'andi' | 'beq' | 'bne'
+						| 'lbu' | 'lhu' | 'll' | 'lui' | 'lw' | 'ori'
+						| 'slti' | 'sltiu' | 'sb' | 'sc' | 'sh' | 'sw') ;
 
-INSTR_J				:	('j') ;
+INSTR_J				:	('j' | 'jal') ;
 
 LABEL                :  (LOWERCASE | UPPERCASE)+ DIGIT? ;
 
-DIGIT: [0-9]+ ;
+DIGIT				: [0-9]+ ;
 
-COLON				: (':');
+COLON				: (':') ;
 
 COMMA: 				(',') ;
 
-WHITESPACE         : (' ');
+WHITESPACE         : (' ') ;
 
-PAREN_OPEN			: ('(');
+PAREN_OPEN			: ('(') ;
 
-PAREN_CLOSE			: (')');
+PAREN_CLOSE			: (')') ;
 
 NEWLINE             : ('\n' | '\r')+ ;
