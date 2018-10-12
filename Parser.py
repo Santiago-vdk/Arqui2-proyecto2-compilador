@@ -10,14 +10,16 @@ def extraerOperandos(line, i):
     k = 0
     while k < len(line):
         line[k] = line[k].replace(",", "")
+
         k += 1
 
+    line.insert(0, i)
     return line
 
 
 def encontrarEtiqueta(instrucciones, etiqueta):
     for instruccion in instrucciones:
-        if(instruccion[1] == etiqueta):
+        if(instruccion[1][0:instruccion[1].find(":")] == etiqueta):
             return int(instruccion[0]) + 1
 
     print("Encontrar Etiqueta: no encontrada " + etiqueta)

@@ -92,13 +92,13 @@ INSTR_R_CAPS		:	('SRA' | 'ADD' | 'ADDU' |  'AND' | 'JR' | 'NOR'
 						| 'SUB' | 'SUBU' | 'VADD' | 'VSUB' | 'VXOR' | 'VAAND') ;
 
 INSTR_I				:	('addi' | 'addiu' | 'andi'
-						| 'lbu' | 'lhu' | 'll' | 'lui' | 'lw' | 'ori'
+						 | 'lhu' | 'll' | 'lui' | 'lw' | 'ori'
 						| 'slti' | 'sltiu' | 'sc' | 'sh' | 'sw'
 						| 'vaddi' | 'vsll' | 'vsrl' | 'vrotl' | 'vrotr'
 						| 'vsb' | 'vlbu' | 'vmov' | 'show') ;
 
 INSTR_I_CAPS 		: ('ADDI' | 'ADDIU' | 'ANDI'
-						| 'LBU' | 'LHU' | 'LL' | 'LUI' | 'LW' | 'ORI'
+						 | 'LHU' | 'LL' | 'LUI' | 'LW' | 'ORI'
 						| 'SLTI' | 'SLTIU' | 'SC' | 'SH' | 'SW'
 						| 'VADDI' | 'VSLL' | 'VSRL' | 'VROTL' | 'VROTR'
 						| 'VSB' | 'VLBU' | 'VMOV' | 'SHOW');
@@ -111,9 +111,9 @@ INSTR_LOGIC			: ('and' | 'or' | 'xor' | 'not') ;
 
 INSTR_LOGIC_CAPS			: ('AND' | 'OR' | 'XOR' | 'NOT') ;
 
-INSTR_EXTRA			:  ('sb')	;
+INSTR_EXTRA			:  ('sb'| 'lbu')	;
 
-INSTR_EXTRA_CAPS	:  ('SB')	;
+INSTR_EXTRA_CAPS	:  ('SB'| 'LBU')	;
 						
 INSTR_BRANCH				:	('bne' | 'beq') ;
 

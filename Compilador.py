@@ -34,18 +34,30 @@ def main(argv):
             instrucciones_indexadas.append(extraerOperandos(l, contador))
             contador += 1
 
-    # Se sustituyen las etiquetas
+    # # Se sustituyen las etiquetas
     posicion = 0
     for instruccion in instrucciones_indexadas:
 
-        tipo_instruccion = instrucciones[instruccion[1]][1]
-        has_tag = instrucciones[instruccion[1]][3]
+        if(len(instruccion) > 2):
+            nombre_instruccion = instruccion[1].lower()
+            valor_instruccion_diccionario = instrucciones[nombre_instruccion]
+            tipo_instruccion = valor_instruccion_diccionario[1]
 
-        if(tipo_instruccion == "J" and has_tag == True):
-            etiqueta = instruccion[-1]
-            indice = encontrarEtiqueta(instrucciones_indexadas, etiqueta)
-            instrucciones_indexadas[posicion][-1] = indice
-        posicion += 1
+            if(tipo_instruccion == "J"):
+                if(nombre_instruccion == "j" or nombre_instruccion == "jr"):
+
+                    etiqueta = instruccion[-1]
+                    indice = encontrarEtiqueta(
+                        instrucciones_indexadas, etiqueta)
+                    instrucciones_indexadas[posicion][-1] = indice
+                else:
+                    has_tag = valor_instruccion_diccionario[3]
+                    if(has_tag == True):
+                        etiqueta = instruccion[-1]
+                        indice = encontrarEtiqueta(
+                            instrucciones_indexadas, etiqueta)
+                        instrucciones_indexadas[posicion][-1] = indice
+            posicion += 1
 
     # Se remueven las etiquetas
     # removerEtiquetas(instrucciones_indexadas)
