@@ -1,4 +1,5 @@
 import os
+import sys
 from antlr4 import FileStream
 from antlr4 import CommonTokenStream
 from antlr4 import ParseTreeWalker
@@ -7,59 +8,80 @@ from Grammar.GramaticaParser import GramaticaParser
 from Grammar.GramaticaListener import GramaticaListener
 from Grammar.Listeners import CustomErrorListener
 from Parser import *
+from Instrucciones import instrucciones
 
-path = os.getcwd() + '/Programas/'
-programa = path + 'Codigo.asm'
 
-input = FileStream(programa)
-lexer = GramaticaLexer(input)
-stream = CommonTokenStream(lexer)
-parser = GramaticaParser(stream)
-tree = parser.gramatica()
-listen = GramaticaListener()
-walker = ParseTreeWalker()
-walker.walk(listen, tree)
+def main(argv):
 
-instrucciones_indexadas = []
+    path = os.getcwd() + '/Programas/'
+    programa = path + argv
 
-# Parseo en tuplas y lista de instrucciones
-with open(programa) as file:
-    contador = 0
-    for l in file:
-        instrucciones_indexadas.append(extraerOperandos(l, contador))
-        contador += 1
+    input = FileStream(programa, encoding='utf8')
+    lexer = GramaticaLexer(input)
+    stream = CommonTokenStream(lexer)
+    parser = GramaticaParser(stream)
+    tree = parser.gramatica()
+    listen = GramaticaListener()
+    walker = ParseTreeWalker()
+    walker.walk(listen, tree)
 
-# Se sustituyen las etiquetas
-posicion = 0
-for instruccion in instrucciones_indexadas:
-    if(instruccion[1] in instrucciones_branching):
-        etiqueta = instruccion[-1]
-        indice = encontrarEtiqueta(instrucciones_indexadas, etiqueta)
-        instrucciones_indexadas[posicion][-1] = indice
-    posicion += 1
+    instrucciones_indexadas = []
 
-# Se remueven las etiquetas
-removerEtiquetas(instrucciones_indexadas)
+    # Parseo en tuplas y lista de instrucciones
+    with open(programa) as file:
+        contador = 0
+        for l in file:
+            instrucciones_indexadas.append(extraerOperandos(l, contador))
+            contador += 1
 
-# Se crea un nuevo indice para las instrucciones
-instrucciones_indexadas = indexarInstrucciones(instrucciones_indexadas)
+    # Se sustituyen las etiquetas
+    posicion = 0
+    for instruccion in instrucciones_indexadas:
 
-# Se reajusta utilizando el primer indice cada instruccion de salto
-posicion = 0
-for instruccion in instrucciones_indexadas:
-    if(instruccion[2] in instrucciones_branching):
-        direccion = instruccion[-1]
-        indice = encontrarEtiqueta(instrucciones_indexadas, direccion)
-        instrucciones_indexadas[posicion][-1] = indice - 1)
-    posicion += 1
+        tipo_instruccion = instrucciones[instruccion[1]][1]
+        has_tag = instrucciones[instruccion[1]][3]
 
-# Se remueven los indices temporales
-instrucciones_indexadas=removerIndicePreTags(instrucciones_indexadas)
+        if(tipo_instruccion == "J" and has_tag == True):
+            etiqueta = instruccion[-1]
+            indice = encontrarEtiqueta(instrucciones_indexadas, etiqueta)
+            instrucciones_indexadas[posicion][-1] = indice
+        posicion += 1
 
-instrucciones_compiladas=[]
+    # Se remueven las etiquetas
+    # removerEtiquetas(instrucciones_indexadas)
 
-for instruccion in instrucciones_indexadas:
-    if(instruccion[1] in)
+    # Se crea un nuevo indice para las instrucciones
+    # instrucciones_indexadas = indexarInstrucciones(instrucciones_indexadas)
 
-for instruccion in instrucciones_indexadas:
-    print(instruccion)
+    # Se reajusta utilizando el primer indice cada instruccion de salto
+    # posicion = 0
+    # for instruccion in instrucciones_indexadas:
+    #     if(instruccion[2] in instrucciones_branching):
+    #         direccion = instruccion[-1]
+    #         indice = encontrarEtiqueta(instrucciones_indexadas, direccion)
+    #         instrucciones_indexadas[posicion][-1] = indice - 1
+    #     posicion += 1
+
+    # Se remueven los indices temporales
+    # instrucciones_indexadas = removerIndicePreTags(instrucciones_indexadas)
+
+    # instrucciones_compiladas = []
+
+    # for instruccion in instrucciones_indexadas:
+    #     tipo_instruccion = instrucciones[instruccion[1]]
+    #     if(tipo_instruccion == "R"):
+    #         None
+    #     elif(tipo_instruccion == "I"):
+    #         None
+    #     elif(tipo_instruccion == "J"):
+    #         None
+    #     else:
+    #         print("Error encontrando tipo de instruccion")
+    #         sys.exit()
+
+    for instruccion in instrucciones_indexadas:
+        print(instruccion)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1])

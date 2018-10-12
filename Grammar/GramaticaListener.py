@@ -26,6 +26,69 @@ class GramaticaListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by GramaticaParser#line_i_3operandos.
+    def enterLine_i_3operandos(self, ctx:GramaticaParser.Line_i_3operandosContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#line_i_3operandos.
+    def exitLine_i_3operandos(self, ctx:GramaticaParser.Line_i_3operandosContext):
+        pass
+
+
+    # Enter a parse tree produced by GramaticaParser#line_extra_memoria.
+    def enterLine_extra_memoria(self, ctx:GramaticaParser.Line_extra_memoriaContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#line_extra_memoria.
+    def exitLine_extra_memoria(self, ctx:GramaticaParser.Line_extra_memoriaContext):
+        pass
+
+
+    # Enter a parse tree produced by GramaticaParser#line_r_3operandos.
+    def enterLine_r_3operandos(self, ctx:GramaticaParser.Line_r_3operandosContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#line_r_3operandos.
+    def exitLine_r_3operandos(self, ctx:GramaticaParser.Line_r_3operandosContext):
+        pass
+
+
+    # Enter a parse tree produced by GramaticaParser#line_r_2operandos_1inmediato.
+    def enterLine_r_2operandos_1inmediato(self, ctx:GramaticaParser.Line_r_2operandos_1inmediatoContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#line_r_2operandos_1inmediato.
+    def exitLine_r_2operandos_1inmediato(self, ctx:GramaticaParser.Line_r_2operandos_1inmediatoContext):
+        pass
+
+
+    # Enter a parse tree produced by GramaticaParser#line_branch.
+    def enterLine_branch(self, ctx:GramaticaParser.Line_branchContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#line_branch.
+    def exitLine_branch(self, ctx:GramaticaParser.Line_branchContext):
+        pass
+
+
+    # Enter a parse tree produced by GramaticaParser#line_jump.
+    def enterLine_jump(self, ctx:GramaticaParser.Line_jumpContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#line_jump.
+    def exitLine_jump(self, ctx:GramaticaParser.Line_jumpContext):
+        pass
+
+
+    # Enter a parse tree produced by GramaticaParser#line_label.
+    def enterLine_label(self, ctx:GramaticaParser.Line_labelContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#line_label.
+    def exitLine_label(self, ctx:GramaticaParser.Line_labelContext):
+        pass
+
+
     # Enter a parse tree produced by GramaticaParser#instruccion_r.
     def enterInstruccion_r(self, ctx:GramaticaParser.Instruccion_rContext):
         pass
@@ -53,39 +116,66 @@ class GramaticaListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by GramaticaParser#ra.
-    def enterRa(self, ctx:GramaticaParser.RaContext):
+    # Enter a parse tree produced by GramaticaParser#instruccion_extra.
+    def enterInstruccion_extra(self, ctx:GramaticaParser.Instruccion_extraContext):
         pass
 
-    # Exit a parse tree produced by GramaticaParser#ra.
-    def exitRa(self, ctx:GramaticaParser.RaContext):
-        pass
-
-
-    # Enter a parse tree produced by GramaticaParser#rb.
-    def enterRb(self, ctx:GramaticaParser.RbContext):
-        pass
-
-    # Exit a parse tree produced by GramaticaParser#rb.
-    def exitRb(self, ctx:GramaticaParser.RbContext):
+    # Exit a parse tree produced by GramaticaParser#instruccion_extra.
+    def exitInstruccion_extra(self, ctx:GramaticaParser.Instruccion_extraContext):
         pass
 
 
-    # Enter a parse tree produced by GramaticaParser#rc.
-    def enterRc(self, ctx:GramaticaParser.RcContext):
+    # Enter a parse tree produced by GramaticaParser#instruccion_logic.
+    def enterInstruccion_logic(self, ctx:GramaticaParser.Instruccion_logicContext):
         pass
 
-    # Exit a parse tree produced by GramaticaParser#rc.
-    def exitRc(self, ctx:GramaticaParser.RcContext):
+    # Exit a parse tree produced by GramaticaParser#instruccion_logic.
+    def exitInstruccion_logic(self, ctx:GramaticaParser.Instruccion_logicContext):
         pass
 
 
-    # Enter a parse tree produced by GramaticaParser#inm.
-    def enterInm(self, ctx:GramaticaParser.InmContext):
+    # Enter a parse tree produced by GramaticaParser#jump_reg.
+    def enterJump_reg(self, ctx:GramaticaParser.Jump_regContext):
         pass
 
-    # Exit a parse tree produced by GramaticaParser#inm.
-    def exitInm(self, ctx:GramaticaParser.InmContext):
+    # Exit a parse tree produced by GramaticaParser#jump_reg.
+    def exitJump_reg(self, ctx:GramaticaParser.Jump_regContext):
+        pass
+
+
+    # Enter a parse tree produced by GramaticaParser#inmediate.
+    def enterInmediate(self, ctx:GramaticaParser.InmediateContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#inmediate.
+    def exitInmediate(self, ctx:GramaticaParser.InmediateContext):
+        pass
+
+
+    # Enter a parse tree produced by GramaticaParser#instruccion_branch.
+    def enterInstruccion_branch(self, ctx:GramaticaParser.Instruccion_branchContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#instruccion_branch.
+    def exitInstruccion_branch(self, ctx:GramaticaParser.Instruccion_branchContext):
+        pass
+
+
+    # Enter a parse tree produced by GramaticaParser#number.
+    def enterNumber(self, ctx:GramaticaParser.NumberContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#number.
+    def exitNumber(self, ctx:GramaticaParser.NumberContext):
+        pass
+
+
+    # Enter a parse tree produced by GramaticaParser#regs.
+    def enterRegs(self, ctx:GramaticaParser.RegsContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#regs.
+    def exitRegs(self, ctx:GramaticaParser.RegsContext):
         pass
 
 
