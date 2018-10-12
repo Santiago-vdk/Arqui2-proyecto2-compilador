@@ -111,13 +111,13 @@ INSTR_LOGIC			: ('and' | 'or' | 'xor' | 'not') ;
 
 INSTR_LOGIC_CAPS			: ('AND' | 'OR' | 'XOR' | 'NOT') ;
 
-INSTR_EXTRA			:  ('sb' | 'lb')	;
+INSTR_EXTRA			:  ('sb')	;
 
-INSTR_EXTRA_CAPS	:  ('SB' | 'LB')	;
+INSTR_EXTRA_CAPS	:  ('SB')	;
 						
-INSTR_BRANCH				:	('bneq' | 'bne' | 'beq') ;
+INSTR_BRANCH				:	('bne' | 'beq') ;
 
-INSTR_BRANCH_CAPS			:	('BNEQ' | 'BNE' | 'BEQ') ;
+INSTR_BRANCH_CAPS			:	('BNE' | 'BEQ') ;
 
 LABEL                :  (LOWERCASE | UPPERCASE)+ DIGIT? ;
 

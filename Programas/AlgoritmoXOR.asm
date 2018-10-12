@@ -2,7 +2,7 @@ ADDI $t0, $0, 100   //guardo en t0 la cantidad de pixeles
 ADDI $t1, $0, 0   //guardamos en t1 la clave a usar
 ADDI $t2, $0, 0      //inicializando el indice en 1
 encriptacion1:
-LB $t3, 0($t2)         // $t3 es Dato y se carga lo que está en indice
+LBU $t3, 0($t2)         // $t3 es Dato y se carga lo que está en indice
 XOR $t4, $t3, $t1   //Resultado es $t4
 ADD $t5, $t2, $t0   // $t5 es nuevadireccion
 SB $t4, 0($t5)        //guardamos el resultado del xor en memoria
