@@ -14,7 +14,7 @@ from Utils import *
 from Export import *
 
 
-def main(argv, debug):
+def main(argv, debug, formato_export):
     print("Compilando " + argv + "...")
     path = os.getcwd() + '/Programas/'
     programa = path + argv
@@ -190,14 +190,18 @@ def main(argv, debug):
     # for instruccion in instrucciones_compiladas:
     #     print(instruccion)
 
-    print("Exportando archivo...")
-    archivo = ExportMIF(instrucciones_compiladas, argv)
+    print("Exportando archivo... " + formato_export)
+    if(formato_export == "MIF"):
+        archivo = ExportMIF(instrucciones_compiladas, argv)
+    else:
+        archivo = ExportMem(instrucciones_compiladas, argv)
 
-    print("Archivo ROM" + archivo + " generado!")
+    print("Archivo " + formato_export + " " + archivo + " generado!")
 
 
 if __name__ == "__main__":
     if(len(sys.argv) == 1):
-        main("Algoritmo4VectorialMemoria.asm", True)
+        # NombreArchivo, DebugFlag, "Mem|MIF"
+        main("Algoritmo4VectorialMemoria.asm", True, "Mem")
     else:
-        main(sys.argv[1], sys.argv[2])
+        main(sys.argv[1], sys.argv[2], sys.argv[3])

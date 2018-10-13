@@ -23,7 +23,7 @@ def ExportMIF(instrucciones, nombrePrograma):
         while(i < len(instrucciones)):
             file.write("       " + str(i) + " : " + instrucciones[i] + ";\n")
             i += 1
-        f.close()
+        file.close()
 
     f = open(path + archivo_rom, 'a')
     f.write("       [" + str(i) + ".." + str(65535) + "] : " +
@@ -32,3 +32,18 @@ def ExportMIF(instrucciones, nombrePrograma):
     f.close()
 
     return archivo_rom
+
+
+def ExportMem(instrucciones, nombrePrograma):
+
+    archivo_mem = nombrePrograma[0:nombrePrograma.find(".")] + ".mem"
+
+    i = 0
+    with open(path + archivo_mem, 'a') as file:
+        while(i < len(instrucciones)):
+            file.write("    " + "mem[" + str(i) + "]" +
+                       " = 32'b" + instrucciones[i] + ";\n")
+            i += 1
+        file.close()
+
+    return archivo_mem
