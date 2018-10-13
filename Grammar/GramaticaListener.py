@@ -35,6 +35,15 @@ class GramaticaListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by GramaticaParser#line_i_3Operandos_inmediate.
+    def enterLine_i_3Operandos_inmediate(self, ctx:GramaticaParser.Line_i_3Operandos_inmediateContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#line_i_3Operandos_inmediate.
+    def exitLine_i_3Operandos_inmediate(self, ctx:GramaticaParser.Line_i_3Operandos_inmediateContext):
+        pass
+
+
     # Enter a parse tree produced by GramaticaParser#line_extra_memoria.
     def enterLine_extra_memoria(self, ctx:GramaticaParser.Line_extra_memoriaContext):
         pass

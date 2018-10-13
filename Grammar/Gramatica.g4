@@ -7,11 +7,16 @@ grammar Gramatica;
 gramatica                : line+ EOF ;
 
 line		    		: 	(line_extra_memoria | line_r_3operandos |
-								line_r_2operandos_1inmediato |
+								line_r_2operandos_1inmediato | line_i_3Operandos_inmediate |
 								line_i_3operandos | line_branch | line_jump | line_label ) NEWLINE?;
 
 line_i_3operandos		:	instruccion_i WHITESPACE regs COMMA WHITESPACE regs COMMA 
 							WHITESPACE inmediate (WHITESPACE+)? COMMENT?;
+
+line_i_3Operandos_inmediate : 	instruccion_i WHITESPACE regs COMMA
+							WHITESPACE number PAREN_OPEN regs PAREN_CLOSE
+							(WHITESPACE+)? COMMENT?;
+
 
 line_extra_memoria		:	instruccion_extra WHITESPACE regs COMMA
 							WHITESPACE number PAREN_OPEN regs PAREN_CLOSE
@@ -19,7 +24,7 @@ line_extra_memoria		:	instruccion_extra WHITESPACE regs COMMA
 							
 line_r_3operandos		:	instruccion_r WHITESPACE regs COMMA
 							WHITESPACE regs COMMA
-							WHITESPACE regs WHITESPACE
+							WHITESPACE regs 
 							(WHITESPACE+)? COMMENT?;
 
 line_r_2operandos_1inmediato		:	instruccion_r WHITESPACE regs COMMA

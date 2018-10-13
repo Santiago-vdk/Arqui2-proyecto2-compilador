@@ -14,7 +14,7 @@ from Utils import *
 from Export import *
 
 
-def main(argv):
+def main(argv, debug):
     print("Compilando " + argv + "...")
     path = os.getcwd() + '/Programas/'
     programa = path + argv
@@ -39,6 +39,9 @@ def main(argv):
         for l in file:
             instrucciones_indexadas.append(extraerOperandos(l, contador))
             contador += 1
+
+    # for instruccion in instrucciones_indexadas:
+    #     print(instruccion)
 
     # # Se sustituyen las etiquetas
     print("Sustituyendo etiquetas...")
@@ -109,8 +112,12 @@ def main(argv):
                 shamt = registros[instruccion[3]]
                 operando_rs = "00000"
 
-            instruccion_compilada = op_code + operando_rs + \
-                operando_rt + operando_rd + shamt + funct
+            if(debug):
+                instruccion_compilada = op_code + " " + operando_rs + " " + \
+                    operando_rt + " " + operando_rd + " " + shamt + " " + funct
+            else:
+                instruccion_compilada = op_code + operando_rs + \
+                    operando_rt + operando_rd + shamt + funct
 
             instrucciones_compiladas.append(instruccion_compilada)
 
@@ -122,13 +129,17 @@ def main(argv):
                 funct = valor_instruccion_diccionario[2]
                 operando_rs = registros[instruccion[2]]
                 operando_rt = registros[instruccion[3]]
-                inmediate = str(instruccion[4])
+                inmediate = binary(int(instruccion[4]))
 
                 if(len(inmediate) < 16):
                     inmediate = extender16Bits(inmediate)
 
-                instruccion_compilada = op_code + operando_rs + \
-                    operando_rt + inmediate
+                if(debug):
+                    instruccion_compilada = op_code + " " + operando_rt + " " + \
+                        operando_rs + " " + inmediate
+                else:
+                    instruccion_compilada = op_code + operando_rs + \
+                        operando_rt + inmediate
 
                 instrucciones_compiladas.append(instruccion_compilada)
             else:
@@ -138,6 +149,8 @@ def main(argv):
                 operando_compuesto = instruccion[3]
 
                 inmediate = operando_compuesto[0:operando_compuesto.find("(")]
+                inmediate = binary(int(inmediate))
+
                 operando_rt = operando_compuesto[operando_compuesto.find(
                     "(") + 1:operando_compuesto.find(")")]
 
@@ -146,8 +159,12 @@ def main(argv):
                 if(len(inmediate) < 16):
                     inmediate = extender16Bits(inmediate)
 
-                instruccion_compilada = op_code + operando_rs + \
-                    operando_rt + inmediate
+                if(debug):
+                    instruccion_compilada = op_code + " " + operando_rs + " " + \
+                        operando_rt + " " + inmediate
+                else:
+                    instruccion_compilada = op_code + operando_rs + \
+                        operando_rt + inmediate
 
                 instrucciones_compiladas.append(instruccion_compilada)
 
@@ -155,12 +172,15 @@ def main(argv):
             # Los siguientes valores son binarios
             op_code = valor_instruccion_diccionario[0]
             funct = valor_instruccion_diccionario[2]
-            address = str(instruccion[2])
+            address = str(binary(instruccion[2]))
 
             if(len(address) < 26):
                 address = extender26Bits(address)
 
-            instruccion_compilada = op_code + address
+            if(debug):
+                instruccion_compilada = op_code + " " + address
+            else:
+                instruccion_compilada = op_code + address
 
             instrucciones_compiladas.append(instruccion_compilada)
         else:
@@ -178,6 +198,6 @@ def main(argv):
 
 if __name__ == "__main__":
     if(len(sys.argv) == 1):
-        main("AlgoritmoXOR.asm")
+        main("Algoritmo4VectorialMemoria.asm", True)
     else:
-        main(sys.argv[1])
+        main(sys.argv[1], sys.argv[2])

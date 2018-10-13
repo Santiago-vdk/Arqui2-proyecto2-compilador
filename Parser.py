@@ -3,8 +3,12 @@ from Instrucciones import instrucciones_diccionario
 
 
 def extraerOperandos(line, i):
-    line = line[0:line.find("//")]
-    line = line.split()
+
+    if(line.find("//") != -1):
+        line = line[0:line.find("//")]
+        line = line.split()
+    else:
+        line = line.split()
 
     # Reemplazo de cada linea las ','
     k = 0
