@@ -1,5 +1,5 @@
 import sys
-from Instrucciones import instrucciones
+from Instrucciones import instrucciones_diccionario
 
 
 def extraerOperandos(line, i):
@@ -19,8 +19,10 @@ def extraerOperandos(line, i):
 
 def encontrarEtiqueta(instrucciones, etiqueta):
     for instruccion in instrucciones:
-        if(instruccion[1][0:instruccion[1].find(":")] == etiqueta):
-            return int(instruccion[0]) + 1
+        if(len(instruccion) == 2):
+            instruccion_raw = instruccion[-1][0:instruccion[-1].find(":")]
+            if(instruccion_raw == etiqueta):
+                return int(instruccion[0]) + 1
 
     print("Encontrar Etiqueta: no encontrada " + etiqueta)
     sys.exit()
@@ -28,8 +30,8 @@ def encontrarEtiqueta(instrucciones, etiqueta):
 
 def encontrarEtiquetaReIndexada(instrucciones, etiqueta):
     for instruccion in instrucciones:
-        if(instruccion[1] == int(etiqueta)):
-            return instruccion[0] - 1
+        if(instruccion[1] == etiqueta):
+            return instruccion[0] + 1
 
     print("Etiqueta Reindexada no encontrada " + etiqueta)
     sys.exit()
