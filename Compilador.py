@@ -11,10 +11,11 @@ from Parser import *
 from Instrucciones import instrucciones_diccionario
 from Registros import registros
 from Utils import *
+from Export import *
 
 
 def main(argv):
-
+    print("Compilando " + argv + "...")
     path = os.getcwd() + '/Programas/'
     programa = path + argv
 
@@ -27,9 +28,12 @@ def main(argv):
     walker = ParseTreeWalker()
     walker.walk(listen, tree)
 
+    print("Ningun error de sintaxis encontrado")
+
     instrucciones_indexadas = []
 
     # Parseo en tuplas y lista de instrucciones
+    print("Parseando archivo...")
     with open(programa) as file:
         contador = 0
         for l in file:
@@ -37,6 +41,7 @@ def main(argv):
             contador += 1
 
     # # Se sustituyen las etiquetas
+    print("Sustituyendo etiquetas...")
     posicion = 0
     for instruccion in instrucciones_indexadas:
 
@@ -55,12 +60,15 @@ def main(argv):
         posicion += 1
 
     # Se remueven las etiquetas
+    print("Removiendo etiquetas...")
     removerEtiquetas(instrucciones_indexadas)
 
     # Se crea un nuevo indice para las instrucciones
+    print("Indexando instrucciones...")
     instrucciones_indexadas = indexarInstrucciones(instrucciones_indexadas)
 
     # Se reajusta utilizando el primer indice cada instruccion de salto
+    print("Reajustando indices...")
     posicion = 0
     for instruccion in instrucciones_indexadas:
         nombre_instruccion = instruccion[2].lower()
@@ -73,13 +81,15 @@ def main(argv):
         posicion += 1
 
     # Se remueven los indices temporales
+    print("Removiendo indices temporales...")
     instrucciones_indexadas = removerIndicePreTags(instrucciones_indexadas)
 
-    for instruccion in instrucciones_indexadas:
-        print(instruccion)
+    # for instruccion in instrucciones_indexadas:
+    #     print(instruccion)
 
+    # Compilado
+    print("Realizando compilacion final...")
     instrucciones_compiladas = []
-
     for instruccion in instrucciones_indexadas:
         nombre_instruccion = instruccion[1].lower()
         valor_instruccion_diccionario = instrucciones_diccionario[nombre_instruccion]
@@ -157,8 +167,13 @@ def main(argv):
             print("Error encontrando tipo de instruccion")
             sys.exit()
 
-    for instruccion in instrucciones_compiladas:
-        print(instruccion)
+    # for instruccion in instrucciones_compiladas:
+    #     print(instruccion)
+
+    print("Exportando archivo...")
+    archivo = ExportMIF(instrucciones_compiladas, argv)
+
+    print("Archivo ROM" + archivo + " generado!")
 
 
 if __name__ == "__main__":
