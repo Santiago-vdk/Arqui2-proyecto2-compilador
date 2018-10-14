@@ -7,6 +7,9 @@ def extraerOperandos(line, i):
     if(line.find("//") != -1):
         line = line[0:line.find("//")]
         line = line.split()
+    elif(line.find("#") != -1):
+        line = line[0:line.find("#")]
+        line = line.split()
     else:
         line = line.split()
 

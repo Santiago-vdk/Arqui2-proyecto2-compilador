@@ -36,12 +36,15 @@ def main(argv, debug, formato_export):
     print("Parseando archivo...")
     with open(programa) as file:
         contador = 0
-        for l in file:
-            instrucciones_indexadas.append(extraerOperandos(l, contador))
-            contador += 1
+        for line in file:
+            line = line.strip()
+            if(line):
+                instrucciones_indexadas.append(
+                    extraerOperandos(line, contador))
+                contador += 1
 
-    # for instruccion in instrucciones_indexadas:
-    #     print(instruccion)
+    for instruccion in instrucciones_indexadas:
+        print(instruccion)
 
     # # Se sustituyen las etiquetas
     print("Sustituyendo etiquetas...")
@@ -101,16 +104,22 @@ def main(argv, debug, formato_export):
         # Se requiere extraer el func
         if(tipo_instruccion == "R"):
 
-            # Los sigueintes valores son binarios
             op_code = valor_instruccion_diccionario[0]
             funct = valor_instruccion_diccionario[2]
-            operando_rd = registros[instruccion[2]]
-            operando_rs = registros[instruccion[3]]
-            operando_rt = registros[instruccion[4]]
-            shamt = "00000"
-            if(valor_instruccion_diccionario[4] == True):
-                shamt = registros[instruccion[3]]
-                operando_rs = "00000"
+
+            if(valor_instruccion_diccionario[4] == False):
+                # Los siguientes valores son binarios
+                operando_rd = registros[instruccion[2]]
+                operando_rs = registros[instruccion[3]]
+                operando_rt = registros[instruccion[4]]
+                shamt = "00000"
+            else:
+                operando_rd = registros[instruccion[2]]
+                operando_rt = registros[instruccion[3]]
+                shamt = str(binary(int(instruccion[4])))
+
+                if(len(shamt) < 5):
+                    shamt = extender5Bits(shamt)
 
             if(debug):
                 instruccion_compilada = op_code + " " + operando_rs + " " + \
@@ -202,6 +211,6 @@ def main(argv, debug, formato_export):
 if __name__ == "__main__":
     if(len(sys.argv) == 1):
         # NombreArchivo, DebugFlag, "Mem|MIF"
-        main("Algoritmo4VectorialMemoria.asm", True, "Mem")
+        main("ProgramaCompleto.asm", False, "Mem")
     else:
         main(sys.argv[1], sys.argv[2], sys.argv[3])

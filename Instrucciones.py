@@ -1,4 +1,5 @@
-# "MNEMONIC": ["OpCode", "Format", "Funct", "HasBranchTag", "HasShamt", "HasMemoryAccess"]
+# "MNEMONIC": ["OpCode", "Format", "Funct", "HasBranchTag", "HasShamt",
+# "HasMemoryAccess", "TipoRConInmediato"]
 instrucciones_diccionario = {
     "add": ["000000", "R", "100000", False, False, False],
     "addi": ["001000", "I", "", False, False, False],

@@ -188,3 +188,12 @@ class GramaticaListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by GramaticaParser#blank.
+    def enterBlank(self, ctx:GramaticaParser.BlankContext):
+        pass
+
+    # Exit a parse tree produced by GramaticaParser#blank.
+    def exitBlank(self, ctx:GramaticaParser.BlankContext):
+        pass
+
+

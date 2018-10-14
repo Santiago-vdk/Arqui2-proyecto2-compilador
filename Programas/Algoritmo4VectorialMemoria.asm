@@ -1,4 +1,4 @@
-addi $0, $0, 0  //relleno
+  addi $0, $0, 0  #relleno
 addi $t0, $0, 8
 addi $t0, $0, 8
 addi $s0, $0, 6

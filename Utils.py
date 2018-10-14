@@ -2,6 +2,19 @@ import sys
 import re
 
 
+def extender5Bits(binario):
+    matches = re.match('[01]*$', binario)
+    if(matches):
+        bits_faltantes = 5 - len(binario)
+        while(bits_faltantes > 0):
+            binario = "0" + binario
+            bits_faltantes -= 1
+        return binario
+    else:
+        print("Error extendiendo a 5 bits")
+        sys.exit()
+
+
 def extender16Bits(binario):
     matches = re.match('[01]*$', binario)
     if(matches):

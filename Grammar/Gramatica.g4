@@ -6,9 +6,12 @@ grammar Gramatica;
 
 gramatica                : line+ EOF ;
 
-line		    		: 	(line_extra_memoria | line_r_3operandos |
+line		    		: 	blank (COMMENT | line_extra_memoria | line_r_3operandos |
 								line_r_2operandos_1inmediato | line_i_3Operandos_inmediate |
-								line_i_3operandos | line_branch | line_jump | line_label ) NEWLINE?;
+								line_i_3operandos | line_branch | line_jump |
+								line_label ) NEWLINE? SPACES?;
+
+
 
 line_i_3operandos		:	instruccion_i WHITESPACE regs COMMA WHITESPACE regs COMMA 
 							WHITESPACE inmediate (WHITESPACE+)? COMMENT?;
@@ -60,8 +63,10 @@ instruccion_branch			: (INSTR_BRANCH | INSTR_BRANCH_CAPS);
 
 number 						: DIGIT+  ;
 
-regs					: (CONSTANT_REG | V_REG | A_REG | T_REG | S_REG | K_REG |
+regs						: (CONSTANT_REG | V_REG | A_REG | T_REG | S_REG | K_REG |
 POINTER_REG | NUMBER_REG);
+
+blank						: (SPACES+)? ;
 
 /*
  * Lexer Rules
@@ -142,4 +147,8 @@ NEWLINE             : ('\n' | '\r')+ ;
 
 COMMENT				: '/*' .*? '*/' -> skip;
 
-LINE_COMMENT		: '//' ~[\r\n]* -> skip;
+LINE_COMMENT		: ('//' | '#') ~[\r\n]* -> skip;
+
+SPACES				: [\t\r\n]+ -> skip;
+
+TAB					: ('\t') ;
