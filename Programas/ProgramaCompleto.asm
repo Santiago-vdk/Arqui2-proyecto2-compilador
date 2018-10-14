@@ -189,7 +189,7 @@ desencriptacionp3:
 		addi $0, $0, 0    //instruccion de relleno
 		addi $t0, $0, 8     //guardo en t0 la cantidad de pixeles
 		addi $s0, $0, 6     //guardamos en t1 la primera constante
-		addi $s1, $0, 80000   //guardamos la direccion a la que quiero guardar el vector de suma
+		addi $s1, $0, 50000   //guardamos la direccion a la que quiero guardar el vector de suma
 		sb $s0, 0($s1)   //se guarda en memoria la primera contante
 		addi $s0, $0, 215     //cargamos la siguiente constante
 		sb $s0, 1($s1)   //se guarda en memoria la siguiente contante

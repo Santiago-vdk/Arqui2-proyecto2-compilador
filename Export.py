@@ -39,7 +39,7 @@ def ExportMem(instrucciones, nombrePrograma):
     archivo_mem = nombrePrograma[0:nombrePrograma.find(".")] + ".mem"
 
     i = 0
-    with open(path + archivo_mem, 'a') as file:
+    with open(path + archivo_mem, 'w') as file:
         while(i < len(instrucciones)):
             file.write("    " + "mem[" + str(i) + "]" +
                        " = 32'b" + instrucciones[i] + ";\n")

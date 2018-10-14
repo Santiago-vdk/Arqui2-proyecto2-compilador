@@ -43,8 +43,8 @@ def main(argv, debug, formato_export):
                     extraerOperandos(line, contador))
                 contador += 1
 
-    for instruccion in instrucciones_indexadas:
-        print(instruccion)
+    # for instruccion in instrucciones_indexadas:
+    #     print(instruccion)
 
     # # Se sustituyen las etiquetas
     print("Sustituyendo etiquetas...")
@@ -100,6 +100,9 @@ def main(argv, debug, formato_export):
         nombre_instruccion = instruccion[1].lower()
         valor_instruccion_diccionario = instrucciones_diccionario[nombre_instruccion]
         tipo_instruccion = valor_instruccion_diccionario[1]
+
+        if(instruccion[0] == 170):
+            print(instruccion)
 
         # Se requiere extraer el func
         if(tipo_instruccion == "R"):
@@ -209,6 +212,7 @@ def main(argv, debug, formato_export):
 
 
 if __name__ == "__main__":
+
     if(len(sys.argv) == 1):
         # NombreArchivo, DebugFlag, "Mem|MIF"
         main("ProgramaCompleto.asm", False, "Mem")
