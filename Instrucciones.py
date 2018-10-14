@@ -2,6 +2,7 @@
 # "HasMemoryAccess", "TipoRConInmediato"]
 instrucciones_diccionario = {
     "add": ["000000", "R", "100000", False, False, False],
+    "xor": ["000000", "R", "100110", False, False, False],
     "addi": ["001000", "I", "", False, False, False],
     "addiu": ["001001", "I", "", False, False, False],
     "addu": ["000000", "R", "100001", False, False, False],
