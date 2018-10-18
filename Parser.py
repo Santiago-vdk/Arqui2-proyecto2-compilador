@@ -35,6 +35,18 @@ def encontrarEtiqueta(instrucciones, etiqueta):
     sys.exit()
 
 
+def encontrarEtiquetaReIndexadaRelativa(instrucciones, etiqueta, indiceInstruccion):
+    for instruccion in instrucciones:
+        if(instruccion[1] == etiqueta):
+            indiceEtiqueta = instruccion[0]
+            nuevaDireccion = int(indiceEtiqueta) - int(indiceInstruccion)
+            nuevaDireccion = nuevaDireccion - 1
+            return nuevaDireccion
+
+    print("Encontrar Etiqueta: no encontrada " + str(etiqueta))
+    sys.exit()
+
+
 def encontrarEtiquetaReIndexada(instrucciones, etiqueta):
     for instruccion in instrucciones:
         if(instruccion[1] == etiqueta):

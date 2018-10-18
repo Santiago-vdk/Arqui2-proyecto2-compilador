@@ -43,9 +43,6 @@ def main(argv, debug, formato_export):
                     extraerOperandos(line, contador))
                 contador += 1
 
-    # for instruccion in instrucciones_indexadas:
-    #     print(instruccion)
-
     # # Se sustituyen las etiquetas
     print("Sustituyendo etiquetas...")
     posicion = 0
@@ -59,8 +56,7 @@ def main(argv, debug, formato_export):
             # Si la instruccion tiene una etiqueta al final
             if(valor_instruccion_diccionario[3] == True):
                 etiqueta = instruccion[-1]
-                indice = encontrarEtiqueta(
-                    instrucciones_indexadas, etiqueta)
+                indice = encontrarEtiqueta(instrucciones_indexadas, etiqueta)
                 instrucciones_indexadas[posicion][-1] = indice
 
         posicion += 1
@@ -80,15 +76,28 @@ def main(argv, debug, formato_export):
         nombre_instruccion = instruccion[2].lower()
         valor_instruccion_diccionario = instrucciones_diccionario[nombre_instruccion]
         if(valor_instruccion_diccionario[3] == True):
-            direccion = instruccion[-1]
-            indice = encontrarEtiquetaReIndexada(
-                instrucciones_indexadas, direccion)
-            instrucciones_indexadas[posicion][-1] = indice - 1
+            if(nombre_instruccion == "j"):
+
+                direccion = instruccion[-1]
+                indice = encontrarEtiquetaReIndexada(
+                    instrucciones_indexadas, direccion)
+                instrucciones_indexadas[posicion][-1] = indice - 1
+
+            else:
+                print("aca ")
+                direccion = instruccion[-1]
+                indice = encontrarEtiquetaReIndexadaRelativa(
+                    instrucciones_indexadas, direccion, instruccion[0])
+                instrucciones_indexadas[posicion][-1] = indice
+
         posicion += 1
 
     # Se remueven los indices temporales
     print("Removiendo indices temporales...")
     instrucciones_indexadas = removerIndicePreTags(instrucciones_indexadas)
+
+    for instruccion in instrucciones_indexadas:
+        print(instruccion)
 
     # for instruccion in instrucciones_indexadas:
     #     print(instruccion)
@@ -113,6 +122,14 @@ def main(argv, debug, formato_export):
                 operando_rs = registros[instruccion[3]]
                 operando_rt = registros[instruccion[4]]
                 shamt = "00000"
+
+                if(debug):
+                    instruccion_compilada = op_code + " " + operando_rs + " " + \
+                        operando_rt + " " + operando_rd + " " + shamt + " " + funct
+                else:
+                    instruccion_compilada = op_code + operando_rs + \
+                        operando_rt + operando_rd + shamt + funct
+
             else:
                 operando_rd = registros[instruccion[2]]
                 operando_rt = registros[instruccion[3]]
@@ -121,16 +138,17 @@ def main(argv, debug, formato_export):
                 if(len(shamt) < 5):
                     shamt = extender5Bits(shamt)
 
-            if(debug):
-                instruccion_compilada = op_code + " " + operando_rs + " " + \
-                    operando_rt + " " + operando_rd + " " + shamt + " " + funct
-            else:
-                instruccion_compilada = op_code + operando_rs + \
-                    operando_rt + operando_rd + shamt + funct
+                if(debug):
+                    instruccion_compilada = op_code + " " + operando_rt + " " + \
+                        operando_rd + " " + shamt + " " + funct
+                else:
+                    instruccion_compilada = op_code + operando_rt + \
+                        operando_rd + shamt + funct
 
             instrucciones_compiladas.append(instruccion_compilada)
 
         elif(tipo_instruccion == "I"):
+            # print(instruccion)
             if(valor_instruccion_diccionario[5] == False):
 
                 # Los siguientes valores son binarios
@@ -138,38 +156,50 @@ def main(argv, debug, formato_export):
                 funct = valor_instruccion_diccionario[2]
                 operando_rs = registros[instruccion[2]]
                 operando_rt = registros[instruccion[3]]
-                inmediate = binary(int(instruccion[4]))
 
+                # bin(int(instruccion[4]))
+                # print("HERE " + format("{0:b}".format(7)))
+                inmediate = format("{0:b}".format(int(instruccion[4])))
+                # print("HERE " + twosComplement(int(instruccion[4]), 16))
                 if(len(inmediate) < 16):
-                    inmediate = extender16Bits(inmediate)
+                    if(int(instruccion[4]) >= 0):
+                        inmediate = extender16Bits(inmediate)
+                    else:
+                        # inmediate = extender16BitsNegativos(inmediate)
+                        inmediate = twosComplement(int(instruccion[4]), 16)[2:]
+                        # print("Done " + inmediate)
 
                 if(debug):
-                    instruccion_compilada = op_code + " " + operando_rt + " " + \
-                        operando_rs + " " + inmediate
+                    instruccion_compilada = op_code + " " + \
+                        operando_rt + " " + operando_rs + " " + inmediate
                 else:
-                    instruccion_compilada = op_code + operando_rs + \
-                        operando_rt + inmediate
+                    instruccion_compilada = op_code + operando_rs + operando_rt + inmediate
 
                 instrucciones_compiladas.append(instruccion_compilada)
             else:
-                print(instruccion)
-
                 # Los siguientes valores son binarios
                 op_code = valor_instruccion_diccionario[0]
-                #funct = valor_instruccion_diccionario[2]
                 operando_rs = registros[instruccion[2]]
                 operando_compuesto = instruccion[3]
 
                 inmediate = operando_compuesto[0:operando_compuesto.find("(")]
-                inmediate = binary(int(inmediate))
+                # inmediate = binary(int(inmediate))
+                inmediate_decimal = inmediate
+                inmediate = format("{0:b}".format(int(inmediate)))
 
                 operando_rt = operando_compuesto[operando_compuesto.find(
                     "(") + 1:operando_compuesto.find(")")]
 
                 operando_rt = registros[operando_rt]
-
+                # print("THERE " + inmediate_decimal)
                 if(len(inmediate) < 16):
-                    inmediate = extender16Bits(inmediate)
+                    if(int(inmediate_decimal) >= 0):
+                        inmediate = extender16Bits(inmediate)
+                    else:
+                        # inmediate = extender16BitsNegativos(inmediate)
+                        inmediate = twosComplement(
+                            int(inmediate_decimal), 16)[2:]
+                        # print("Done " + inmediate)
 
                 if(debug):
                     instruccion_compilada = op_code + " " + operando_rt + " " + \
@@ -215,6 +245,6 @@ if __name__ == "__main__":
 
     if(len(sys.argv) == 1):
         # NombreArchivo, DebugFlag, "Mem|MIF"
-        main("ProgramaCompleto.asm", False, "Mem")
+        main("Algoritmo4VectorialMemoria.asm", False, "Mem")
     else:
         main(sys.argv[1], sys.argv[2], sys.argv[3])
