@@ -1,5 +1,4 @@
-# "MNEMONIC": ["OpCode", "Format", "Funct", "HasBranchTag", "HasShamt",
-# "HasMemoryAccess", "TipoRConInmediato"]
+# "MNEMONIC": ["OpCode", "Format", "Funct", "HasBranchTag", "HasShamt", "HasMemoryAccess"]
 instrucciones_diccionario = {
     "add": ["000000", "R", "100000", False, False, False],
     "xor": ["000000", "R", "100110", False, False, False],
@@ -13,7 +12,7 @@ instrucciones_diccionario = {
     "j": ["000010", "J", "", True, False, False],
     "jal": ["000011", "J", "", True, False, False],
     "jr": ["000000", "R", "1000", False, False, False],   # OJO
-    "lbu": ["100100", "I", "", False, False, True],
+    "lbu": ["100100", "I", "", False, False, True],  # Corregir
     "lhu": ["100101", "I", "", False, False, True],
     "ll": ["110000", "I", "", False, False, True],
     "lui": ["001111", "I", "", False, False, False],

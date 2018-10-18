@@ -101,9 +101,6 @@ def main(argv, debug, formato_export):
         valor_instruccion_diccionario = instrucciones_diccionario[nombre_instruccion]
         tipo_instruccion = valor_instruccion_diccionario[1]
 
-        if(instruccion[0] == 170):
-            print(instruccion)
-
         # Se requiere extraer el func
         if(tipo_instruccion == "R"):
 
@@ -155,9 +152,12 @@ def main(argv, debug, formato_export):
 
                 instrucciones_compiladas.append(instruccion_compilada)
             else:
+                print(instruccion)
+
                 # Los siguientes valores son binarios
                 op_code = valor_instruccion_diccionario[0]
-                funct = valor_instruccion_diccionario[2]
+                #funct = valor_instruccion_diccionario[2]
+                operando_rs = registros[instruccion[2]]
                 operando_compuesto = instruccion[3]
 
                 inmediate = operando_compuesto[0:operando_compuesto.find("(")]
@@ -172,11 +172,11 @@ def main(argv, debug, formato_export):
                     inmediate = extender16Bits(inmediate)
 
                 if(debug):
-                    instruccion_compilada = op_code + " " + operando_rs + " " + \
-                        operando_rt + " " + inmediate
+                    instruccion_compilada = op_code + " " + operando_rt + " " + \
+                        operando_rs + " " + inmediate
                 else:
-                    instruccion_compilada = op_code + operando_rs + \
-                        operando_rt + inmediate
+                    instruccion_compilada = op_code + operando_rt + \
+                        operando_rs + inmediate
 
                 instrucciones_compiladas.append(instruccion_compilada)
 
