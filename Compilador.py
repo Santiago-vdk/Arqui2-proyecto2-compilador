@@ -84,7 +84,6 @@ def main(argv, debug, formato_export):
                 instrucciones_indexadas[posicion][-1] = indice - 1
 
             else:
-                print("aca ")
                 direccion = instruccion[-1]
                 indice = encontrarEtiquetaReIndexadaRelativa(
                     instrucciones_indexadas, direccion, instruccion[0])
@@ -96,8 +95,8 @@ def main(argv, debug, formato_export):
     print("Removiendo indices temporales...")
     instrucciones_indexadas = removerIndicePreTags(instrucciones_indexadas)
 
-    for instruccion in instrucciones_indexadas:
-        print(instruccion)
+    # for instruccion in instrucciones_indexadas:
+    #     print(instruccion)
 
     # for instruccion in instrucciones_indexadas:
     #     print(instruccion)
@@ -131,18 +130,28 @@ def main(argv, debug, formato_export):
                         operando_rt + operando_rd + shamt + funct
 
             else:
+                # print(instruccion)
+
                 operando_rd = registros[instruccion[2]]
                 operando_rt = registros[instruccion[3]]
-                shamt = str(binary(int(instruccion[4])))
+                operando_rs = "00000"
+                # str(binary(int(instruccion[4])))
+                funct = valor_instruccion_diccionario[2]
+                shamt = format("{0:b}".format(int(instruccion[4])))
 
+                # if(len(shamt) < 5):
+                #     shamt = extender5Bits(shamt)
                 if(len(shamt) < 5):
-                    shamt = extender5Bits(shamt)
+                    if(int(instruccion[4]) >= 0):
+                        shamt = extender5Bits(shamt)
+                    else:
+                        shamt = twosComplement(int(instruccion[4]), 5)[2:]
 
                 if(debug):
-                    instruccion_compilada = op_code + " " + operando_rt + " " + \
+                    instruccion_compilada = op_code + " " + operando_rs + " " + operando_rt + " " + \
                         operando_rd + " " + shamt + " " + funct
                 else:
-                    instruccion_compilada = op_code + operando_rt + \
+                    instruccion_compilada = op_code + operando_rs + operando_rt + \
                         operando_rd + shamt + funct
 
             instrucciones_compiladas.append(instruccion_compilada)
@@ -153,9 +162,9 @@ def main(argv, debug, formato_export):
 
                 # Los siguientes valores son binarios
                 op_code = valor_instruccion_diccionario[0]
-                funct = valor_instruccion_diccionario[2]
-                operando_rs = registros[instruccion[2]]
-                operando_rt = registros[instruccion[3]]
+                # funct = valor_instruccion_diccionario[2]
+                operando_rt = registros[instruccion[2]]
+                operando_rs = registros[instruccion[3]]
 
                 # bin(int(instruccion[4]))
                 # print("HERE " + format("{0:b}".format(7)))
@@ -245,6 +254,6 @@ if __name__ == "__main__":
 
     if(len(sys.argv) == 1):
         # NombreArchivo, DebugFlag, "Mem|MIF"
-        main("Algoritmo4VectorialMemoria.asm", False, "Mem")
+        main("ProgramaCompleto.asm", False, "Mem")
     else:
         main(sys.argv[1], sys.argv[2], sys.argv[3])
