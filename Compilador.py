@@ -130,11 +130,11 @@ def main(argv, debug, formato_export):
                         operando_rt + operando_rd + shamt + funct
 
             else:
-                # print(instruccion)
+                print(instruccion)
 
                 operando_rd = registros[instruccion[2]]
-                operando_rt = registros[instruccion[3]]
-                operando_rs = "00000"
+                operando_rs = registros[instruccion[3]]
+                operando_rt = "00000"
                 # str(binary(int(instruccion[4])))
                 funct = valor_instruccion_diccionario[2]
                 shamt = format("{0:b}".format(int(instruccion[4])))
@@ -254,6 +254,6 @@ if __name__ == "__main__":
 
     if(len(sys.argv) == 1):
         # NombreArchivo, DebugFlag, "Mem|MIF"
-        main("ProgramaCompleto.asm", False, "Mem")
+        main("Pruebas.asm", False, "Mem")
     else:
         main(sys.argv[1], sys.argv[2], sys.argv[3])
